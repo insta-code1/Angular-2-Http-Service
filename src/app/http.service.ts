@@ -21,4 +21,9 @@ export class HttpService {
       })
       .map((data: Response) => data.json());
   }
+
+  getOwnData() {
+    return this.http.get('https://rest-api-87b75.firebaseio.com/data.json')
+    .map((response: Response) => response.json());
+  }
 }
