@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Response } from '@angular/http';
+import { Component } from '@angular/core';
+
 import { HttpService } from './http.service';
 
 @Component({
@@ -9,13 +9,14 @@ import { HttpService } from './http.service';
   styleUrls: ['http.component.css'],
   providers: [HttpService]
 })
-export class HttpComponent implements OnInit{
+export class HttpComponent {
   constructor(private httpService: HttpService) {}
 
-  ngOnInit() {
-    this.httpService.getData()
+  onSubmit(username: string, email: string) {
+    this.httpService.sendData({username:username, email: email})
     .subscribe(
-      (data: any) => console.log(data)
+      data => console.log(data)
+      
     );
   }
 }
